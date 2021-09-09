@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Play.Commom;
 using Play.Common.MongoDB;
+using Play.Inventory.Service.Clients;
 using Play.Inventory.Service.Entities;
 
 namespace Play.Inventory.Service
@@ -31,6 +32,11 @@ namespace Play.Inventory.Service
         {
             services.AddMongoDb()
                     .RegisterMongoRepository<InventoryItem>("inventoryitems");
+
+            services.AddHttpClient<CatalogClient>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:5001");
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
