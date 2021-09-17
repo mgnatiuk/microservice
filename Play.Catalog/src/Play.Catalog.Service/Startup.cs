@@ -22,6 +22,8 @@ namespace Play.Catalog.Service
         public void ConfigureServices(IServiceCollection services)
         {
 
+            //services.AddHealthChecks();
+
             services.AddMongoDb()
                     .RegisterMongoRepository<Item>("items");
 
