@@ -30,9 +30,6 @@ namespace Play.Inventory.Service.Controllers
             if (userId == Guid.Empty)
                 return BadRequest();
 
-            // var items = (await _itemsRepository.GetAllAsync(x => x.UserId == userId))
-            // .Select(x => x.AsDto());
-
             var catalogItems = await _catalogClient.GetGataloItemsAsync();
             var inventoryItemEntities = await _itemsRepository.GetAllAsync(x => x.UserId == userId);
 
